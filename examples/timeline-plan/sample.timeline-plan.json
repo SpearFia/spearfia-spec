@@ -1,0 +1,21 @@
+{
+  "$schema": "https://spearfia.dev/schemas/timeline-plan/v1.json",
+  "plan_id": "plan-0001",
+  "base_snapshot": "snap-0000",
+  "timebase": { "num": 60000, "den": 1001 },
+  "items": [
+    {
+      "cue_id": "c1", "kind": "clip", "track": "V1", "start_frame": 0, "duration_frames": 480,
+      "source": { "path": "footage/day1.mp4", "in_frame": 4316 },
+      "intent": { "start_frame": 0, "duration_frames": 480 }
+    },
+    {
+      "cue_id": "s1", "kind": "sfx", "track": "A2", "start_frame": 12, "duration_frames": 45,
+      "source": { "asset": "spearfia/record-scratch@0.1.0" }
+    },
+    {
+      "cue_id": "l1", "kind": "effect", "track": "V2", "start_frame": 0, "duration_frames": 480,
+      "apply": "spearfia/focus-loupe#pip.face-circle", "params": { "position": "bottom-left" }
+    }
+  ]
+}
