@@ -1,0 +1,28 @@
+{
+  "$schema": "https://spearfia.dev/schemas/asset/v1.json",
+  "id": "spearfia/focus-loupe@0.1.0",
+  "name": "Focus Loupe",
+  "kind": "effect",
+  "summary": "Zoom, punch-in and circular magnifier loupe, including a face-following picture-in-picture.",
+  "license": "MIT OR Apache-2.0",
+  "source": { "type": "git", "url": "https://github.com/spearfia/plugins" },
+  "hash": "sha256:469f41d96a9726fed0d5f7a4cc570407f19f446fd11ba34235a0ace91bc1d0fa",
+  "hosts": [
+    { "host": "resolve", "format": "dctl", "path": "dctl/FocusLoupe.dctl" },
+    { "host": "filmcraft", "format": "wgsl", "path": "wgsl/focus_loupe.wgsl" }
+  ],
+  "capabilities": [
+    {
+      "id": "pip.face-circle",
+      "summary": "Circular picture-in-picture that follows the speaker's face.",
+      "inputs": {
+        "center": { "type": "point", "default": [0.5, 0.5] },
+        "radius": { "type": "float", "default": 0.15, "min": 0.02, "max": 0.5 },
+        "zoom": { "type": "float", "default": 1.5, "min": 1, "max": 6 }
+      },
+      "requires": ["face_track"],
+      "binds": { "center": "face_track.center", "radius": "face_track.radius" }
+    }
+  ],
+  "tags": ["zoom", "loupe", "pip", "facecam"]
+}
