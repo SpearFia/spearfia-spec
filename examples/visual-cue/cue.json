@@ -1,0 +1,18 @@
+{
+  "id": "v1",
+  "anchor": {
+    "quote": "VO: Maya meets Jess.",
+    "line": 2,
+    "lines": 1,
+    "kind": "VO",
+    "before": "",
+    "after": ""
+  },
+  "visual_type": "Character scene",
+  "method": "Remotion template",
+  "asset_state": "missing",
+  "review": "draft",
+  "timing": "",
+  "details": {},
+  "references": []
+}

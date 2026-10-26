@@ -14,3 +14,4 @@ and the project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   What counts as a word, how cues sit next to styled spans, and how labels name catalog
   sounds.
 - `examples/script/script.md` shows each sound effect placement.
+- Visual Script v1: non-spoken Markdown cues, stable narration anchors, production details, references and review states, with a schema and example.

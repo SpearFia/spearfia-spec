@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spearfia.dev/schemas/visual-cue/v1.json",
+  "title": "Visual cue metadata",
+  "type": "object",
+  "required": [
+    "id",
+    "anchor",
+    "visual_type",
+    "method",
+    "asset_state",
+    "review",
+    "timing",
+    "details",
+    "references"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+    },
+    "anchor": {
+      "type": "object",
+      "required": [
+        "quote",
+        "line",
+        "lines",
+        "kind",
+        "before",
+        "after"
+      ],
+      "properties": {
+        "quote": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 65536
+        },
+        "line": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "lines": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "kind": {
+          "type": "string"
+        },
+        "before": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "after": {
+          "type": "string",
+          "maxLength": 80
+        }
+      }
+    },
+    "visual_type": {
+      "type": "string"
+    },
+    "method": {
+      "type": "string"
+    },
+    "asset_state": {
+      "type": "string"
+    },
+    "review": {
+      "type": "string"
+    },
+    "timing": {
+      "type": "string"
+    },
+    "details": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "references": {
+      "type": "array",
+      "maxItems": 128,
+      "items": {
+        "type": "object",
+        "required": [
+          "role",
+          "path",
+          "revision",
+          "scope"
+        ],
+        "properties": {
+          "role": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "revision": {
+            "type": "string"
+          },
+          "scope": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
