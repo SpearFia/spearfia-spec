@@ -1,0 +1,27 @@
+{
+  "spec_version": 1,
+  "stages": [
+    {
+      "id": "voiceover",
+      "title": "Voiceover",
+      "agent": {
+        "provider": "codex",
+        "executable": "",
+        "model": "",
+        "effort": "xhigh",
+        "timeout_seconds": 3600
+      },
+      "prompt": "Use the voiceover skill. Read the approved handoff. Generate and link narration.",
+      "production": true,
+      "review": true,
+      "checks": [
+        {
+          "kind": "links",
+          "role": "voiceover",
+          "minimum": 1,
+          "coverage": true
+        }
+      ]
+    }
+  ]
+}
