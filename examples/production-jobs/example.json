@@ -1,0 +1,34 @@
+{
+  "spec_version": 1,
+  "jobs": [
+    {
+      "id": "voice-01",
+      "title": "Opening narration",
+      "stage": "voiceover",
+      "depends_on": [],
+      "inputs": [],
+      "task": {
+        "adapter": "voiceover",
+        "url": "http://127.0.0.1:3900",
+        "text": "Hello world.",
+        "profile_id": "narrator",
+        "instruct": "",
+        "language": "Auto",
+        "speed": 1,
+        "steps": 32,
+        "outputs": [
+          {
+            "path": "A-roll/voiceover/01-{key}.wav",
+            "kind": "audio",
+            "role": "voiceover",
+            "anchor": {
+              "line": 1,
+              "quote": "Hello world."
+            }
+          }
+        ]
+      },
+      "checks": []
+    }
+  ]
+}

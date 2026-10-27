@@ -8,6 +8,13 @@ and the project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Durable artifact jobs/checkpoints, measured word alignment, executable channel style,
+  visual treatments and render plans, with examples and production execution semantics.
+- Job/alignment/caption stage checks in the draft production pipeline.
+
+- Draft production pipeline, run checkpoint and agent report formats for CLI agent
+  coordination, output verification, creator gates and interruption recovery.
+
 - Initial repository scaffold.
 - `docs/script-directives.md`: where an `:sfx` cue plays: on a spoken word, on the cut into
   or out of a line, on a line of its own, on an on-screen line, or as a section starts.

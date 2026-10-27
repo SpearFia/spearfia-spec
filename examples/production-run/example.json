@@ -1,0 +1,18 @@
+{
+  "spec_version": 1,
+  "pipeline_revision": "v123456789abc",
+  "state": "review",
+  "message": "Listen to narration before continuing.",
+  "steps": [
+    {
+      "id": "voiceover",
+      "state": "review",
+      "attempts": 1,
+      "message": "Narration verified.",
+      "reply": "",
+      "artifacts": {
+        "A-roll/voiceover/01.wav": "v123456789abc"
+      }
+    }
+  ]
+}

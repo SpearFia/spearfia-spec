@@ -1,0 +1,50 @@
+{
+  "spec_version": 1,
+  "captions": {
+    "enabled": true,
+    "font": "Arial",
+    "size": 64,
+    "color": "#ffffff",
+    "accent": "#ffcc00",
+    "position": [
+      0.5,
+      0.85
+    ],
+    "max_words": 6,
+    "words_per_line": 3,
+    "max_chars": 42,
+    "max_gap_ms": 500,
+    "pop_ms": 100,
+    "mode": "word",
+    "emphasis": [],
+    "outline": 3
+  },
+  "mix": {
+    "enabled": true,
+    "voice_db": 0,
+    "music_db": -20,
+    "sfx_db": -10,
+    "fade_seconds": 0.1,
+    "duck_db": -8,
+    "attack_seconds": 0.1,
+    "release_seconds": 0.25
+  },
+  "recipes": [
+    {
+      "id": "channel/gentle-zoom@1.0.0",
+      "name": "gentle-zoom",
+      "steps": [
+        {
+          "use": "filmcraft/motion#apply",
+          "target": "picture",
+          "with": {
+            "scale": {
+              "from": 100,
+              "to": 108
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

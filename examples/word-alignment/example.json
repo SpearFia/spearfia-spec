@@ -1,0 +1,33 @@
+{
+  "spec_version": 1,
+  "script_revision": "v0123456789ab",
+  "source": {
+    "path": "A-roll/voiceover/01.wav",
+    "hash": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "analyzer": {
+    "name": "voicestudio-word-transcription",
+    "version": "1"
+  },
+  "timebase": {
+    "num": 30,
+    "den": 1
+  },
+  "duration_frames": 60,
+  "words": [
+    {
+      "line": 1,
+      "word": 0,
+      "text": "Hello",
+      "start_frame": 3,
+      "end_frame": 12
+    },
+    {
+      "line": 1,
+      "word": 1,
+      "text": "world.",
+      "start_frame": 15,
+      "end_frame": 28
+    }
+  ]
+}
