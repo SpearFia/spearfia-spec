@@ -61,6 +61,9 @@
           "reply": {
             "type": "string"
           },
+          "log": {
+            "type": "string"
+          },
           "artifacts": {
             "type": "object",
             "additionalProperties": {
