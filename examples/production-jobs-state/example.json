@@ -1,0 +1,18 @@
+{
+  "spec_version": 1,
+  "jobs": [
+    {
+      "id": "voice-01",
+      "key": "sha256:abc",
+      "state": "uncertain",
+      "provider_id": "",
+      "message": "Recover from history before retrying a lost synchronous request.",
+      "attempts": 1,
+      "seed": 123,
+      "started": 1793000000,
+      "outputs": [],
+      "link_ids": [],
+      "reply": ""
+    }
+  ]
+}

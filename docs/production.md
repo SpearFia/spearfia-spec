@@ -36,3 +36,7 @@ project edit lock. It captures prompts, stdout/stderr and reports by stage and a
 An interrupted `running` checkpoint becomes failed on the next invocation; it is not
 silently considered complete or restarted. Resuming launches a fresh agent with prior
 reports and the creator's reply; it must inspect existing work before producing assets.
+
+Artifact-level dependency jobs, service recovery, measured word alignment and executable
+visual/audio treatments use the additional [production execution](production-execution.md)
+formats.

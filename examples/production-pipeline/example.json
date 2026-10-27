@@ -20,6 +20,10 @@
           "role": "voiceover",
           "minimum": 1,
           "coverage": true
+        },
+        {
+          "kind": "jobs",
+          "stage": "voiceover"
         }
       ]
     }

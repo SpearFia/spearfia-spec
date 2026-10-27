@@ -1,0 +1,21 @@
+{
+  "layers": [
+    {
+      "kind": "text",
+      "text": "A measurable result",
+      "track": 4,
+      "position": [
+        0.5,
+        0.2
+      ],
+      "font_size": 48,
+      "color": "#ffffff"
+    }
+  ],
+  "effects": [],
+  "recipes": [],
+  "camera": {
+    "from": 100,
+    "to": 110
+  }
+}
