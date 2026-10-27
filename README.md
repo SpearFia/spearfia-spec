@@ -1,6 +1,6 @@
 # spearfia-spec
 
-Open formats for Spear Fia: script, asset, project, vision, recipe, analysis, timeline plan.
+Open formats for Spear Fia: script, asset, project, vision, recipe, analysis, links, timeline plan.
 
 **Status:** pre-alpha. Nothing here is stable yet.
 

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://spearfia.dev/schemas/links/v1.json",
+  "links": [
+    {
+      "id": "k1",
+      "quote": "You'd think it would help.",
+      "line": 4,
+      "media": { "path": "media/vo/cold-open.wav" },
+      "role": "voiceover",
+      "kind": "audio"
+    },
+    {
+      "id": "k2",
+      "quote": "think it would help.",
+      "line": 4,
+      "media": { "path": "media/broll/track-day.mp4" },
+      "role": "b-roll",
+      "kind": "picture",
+      "in": "00:01:12",
+      "out": "78.5"
+    },
+    {
+      "id": "k3",
+      "quote": "I'm a circuit racer.",
+      "line": 9,
+      "media": { "path": "media/vo/chapter-one.wav" },
+      "role": "voiceover",
+      "kind": "audio"
+    }
+  ],
+  "next_id": 4
+}
