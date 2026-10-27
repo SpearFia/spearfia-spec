@@ -50,7 +50,11 @@ Frame intervals are half-open, with rational `num/den` frame rates. Alignment wo
 line. Do not confuse source line numbers with indexes into a heading-free line list.
 Source hashes use `sha256:<hex>`. Script revisions use the application's content revision.
 Word records must be unique, chronological, within source duration and match saved text.
-Missing/reordered/extra speech must not be replaced by estimated timestamps.
+Transcription is a clock, not the text: words it hears exactly anchor the timing. A
+short misheard run (at most 8 consecutive words, and at most 20% of the words) is placed
+between its measured neighbours by character length and marked `"estimated": true`.
+Filler the audio adds beyond the script is ignored up to 15% of heard words. Larger
+divergence, reordering beyond a 12-word resync window, or invalid times fail.
 
 Caption grouping respects line boundaries, punctuation, gap/word/character limits and
 words per line. `word` mode produces phrase states with active-word character ranges;

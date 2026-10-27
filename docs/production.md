@@ -4,7 +4,8 @@ Licensed under MIT OR Apache-2.0.
 
 `production/pipeline.json` uses `production-pipeline`: an ordered list of stages with
 Claude Code or Codex assignments, optional exact model/effort strings, instructions,
-timeouts, production approval requirements, review gates and output checks. Empty model
+timeouts, network access and extra writable folders (`network`, `writable_dirs`; off
+and empty by default), production approval requirements, review gates and output checks. Empty model
 and executable strings inherit the installed CLI's configuration/discovery. IDs are unique.
 File checks name project-relative files, without traversal, aliases outside the project,
 or approval/run/config records. Link checks require a minimum count of valid, existing
