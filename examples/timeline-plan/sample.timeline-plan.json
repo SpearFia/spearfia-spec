@@ -10,6 +10,14 @@
       "intent": { "start_frame": 0, "duration_frames": 480 }
     },
     {
+      "cue_id": "k1", "kind": "clip", "track": "A1", "start_frame": 0, "duration_frames": 480,
+      "source": { "path": "media/vo/cold-open.wav", "in_frame": 0 }
+    },
+    {
+      "cue_id": "t1", "kind": "transition", "track": "V1", "start_frame": 0, "duration_frames": 30,
+      "params": { "effect": "dip_to_black", "attach": "c1", "edge": "in" }
+    },
+    {
       "cue_id": "s1", "kind": "sfx", "track": "A2", "start_frame": 12, "duration_frames": 45,
       "source": { "asset": "spearfia/record-scratch@0.1.0" }
     },
