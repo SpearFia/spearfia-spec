@@ -15,3 +15,4 @@ and the project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   sounds.
 - `examples/script/script.md` shows each sound effect placement.
 - Visual Script v1: non-spoken Markdown cues, stable narration anchors, production details, references and review states, with a schema and example.
+- Agent editing v1: UTF-8 range replacements and typed visual cue operations, with schemas and examples.
