@@ -80,6 +80,7 @@
                 "kind": {
                   "enum": [
                     "file",
+                    "script",
                     "visuals",
                     "links",
                     "filmcraft"
