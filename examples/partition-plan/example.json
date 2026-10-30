@@ -1,0 +1,35 @@
+{
+  "spec_version": 1,
+  "source_root": "D:/SpearFia/projects/gta",
+  "project": {
+    "name": "GTA story",
+    "spec_version": 1,
+    "adapter": "filmcraft"
+  },
+  "inherited": {
+    "vision.yaml": "name: gta\n"
+  },
+  "documents": {
+    "script/script.md": {
+      "revision": "v123",
+      "text": "## First arc\nStory.\n"
+    }
+  },
+  "partitions": [
+    {
+      "definition": {
+        "id": "01",
+        "title": "First arc",
+        "notes": "Ends at the first turning point.",
+        "script": {
+          "path": "script/script.md",
+          "revision": "v123",
+          "start": 0,
+          "end": 20
+        },
+        "context": []
+      },
+      "assignment": null
+    }
+  ]
+}

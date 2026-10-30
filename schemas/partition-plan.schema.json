@@ -1,0 +1,259 @@
+{
+  "type": "object",
+  "properties": {
+    "spec_version": {
+      "const": 1
+    },
+    "source_root": {
+      "type": "string"
+    },
+    "project": {
+      "type": "object"
+    },
+    "inherited": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "documents": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "revision": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "revision",
+          "text"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "partitions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "properties": {
+          "definition": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "notes": {
+                "type": "string"
+              },
+              "script": {
+                "type": "object",
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  },
+                  "revision": {
+                    "type": "string"
+                  },
+                  "start": {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  "end": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "shared": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "path",
+                  "revision",
+                  "start",
+                  "end"
+                ],
+                "additionalProperties": false
+              },
+              "context": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "path": {
+                      "type": "string"
+                    },
+                    "revision": {
+                      "type": "string"
+                    },
+                    "start": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "end": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "shared": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "path",
+                    "revision",
+                    "start",
+                    "end"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "id",
+              "title",
+              "script"
+            ],
+            "additionalProperties": false
+          },
+          "assignment": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "project": {
+                    "type": "string"
+                  },
+                  "state": {
+                    "enum": [
+                      "reserved",
+                      "created"
+                    ]
+                  }
+                },
+                "required": [
+                  "project",
+                  "state"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "definition",
+          "assignment"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "spec_version",
+    "source_root",
+    "project",
+    "inherited",
+    "documents",
+    "partitions"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spearfia.dev/schemas/partition-plan/v1.json",
+  "$defs": {
+    "partition": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]{0,63}$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notes": {
+          "type": "string"
+        },
+        "script": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "start": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "end": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "shared": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "path",
+            "revision",
+            "start",
+            "end"
+          ],
+          "additionalProperties": false
+        },
+        "context": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "revision": {
+                "type": "string"
+              },
+              "start": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "end": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "shared": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "path",
+              "revision",
+              "start",
+              "end"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "script"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

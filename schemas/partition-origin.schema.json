@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "properties": {
+    "source_root": {
+      "type": "string"
+    },
+    "partition_id": {
+      "type": "string"
+    },
+    "definition_revision": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "source_root",
+    "partition_id",
+    "definition_revision"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spearfia.dev/schemas/partition-origin/v1.json"
+}
