@@ -12,7 +12,11 @@
     "section",
     "sources",
     "edits",
-    "media_bindings"
+    "media_bindings",
+    "inputs",
+    "criteria_sha256",
+    "windows",
+    "dependencies"
   ],
   "properties": {
     "version": {
@@ -131,7 +135,14 @@
             "exclusiveMinimum": 0
           },
           "crop": {
-            "type": "object"
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "reviewed_proxy_sha256": {
+            "$ref": "#/$defs/hash",
+            "description": "Semantic source fingerprint retained across a verified HQ replacement."
           }
         },
         "additionalProperties": true
@@ -309,6 +320,87 @@
           "height": {
             "type": "integer",
             "minimum": 1
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/hash"
+      }
+    },
+    "criteria_sha256": {
+      "$ref": "#/$defs/hash"
+    },
+    "windows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "context_sha256",
+          "candidates",
+          "options",
+          "flags",
+          "evidence_adequate"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "context_sha256": {
+            "$ref": "#/$defs/hash"
+          },
+          "candidates": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "options": {
+            "type": "array",
+            "minItems": 2,
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "flags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_adequate": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "edit_id",
+          "source_ids",
+          "render_sha256"
+        ],
+        "properties": {
+          "edit_id": {
+            "type": "string"
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "render_sha256": {
+            "$ref": "#/$defs/hash"
           }
         },
         "additionalProperties": true
