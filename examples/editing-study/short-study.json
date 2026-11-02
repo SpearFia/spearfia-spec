@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "mode": "recommendations-only",
+  "title": "Format example: short editing study",
+  "split": "calibration",
+  "duration_ms": 30000,
+  "media": {
+    "path": "short-demo.mp4",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "beats": [
+    {
+      "id": "contrast",
+      "start_ms": 0,
+      "end_ms": 10000,
+      "narration": "One route is shorter. The other route is safer.",
+      "current_presentation": "A map without labels.",
+      "candidates": [
+        {
+          "id": "routes-comparison-pop",
+          "kind": "comparison",
+          "motion": "pop",
+          "labels": [
+            "SHORTER ROUTE",
+            "SAFER ROUTE"
+          ],
+          "reveal_ms": [
+            1000,
+            5000
+          ]
+        }
+      ]
+    },
+    {
+      "id": "road",
+      "start_ms": 10000,
+      "end_ms": 20000,
+      "narration": "The road bends around the lake.",
+      "current_presentation": "The shot shows the road bending around the lake.",
+      "candidates": []
+    },
+    {
+      "id": "steps",
+      "start_ms": 20000,
+      "end_ms": 30000,
+      "narration": "There are three steps: prepare, test, review.",
+      "current_presentation": "Talking head without text.",
+      "candidates": [
+        {
+          "id": "steps-progressive-pop",
+          "kind": "progressive",
+          "motion": "pop",
+          "labels": [
+            "PREPARE",
+            "TEST",
+            "REVIEW"
+          ],
+          "reveal_ms": [
+            21000,
+            23500,
+            26500
+          ]
+        },
+        {
+          "id": "steps-source-card-pop",
+          "kind": "source-card",
+          "motion": "pop",
+          "labels": [
+            "PREPARE / TEST / REVIEW"
+          ],
+          "reveal_ms": [
+            21500
+          ],
+          "source_label": "SUPPLIED NARRATION"
+        }
+      ]
+    }
+  ]
+}

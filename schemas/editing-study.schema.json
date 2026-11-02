@@ -1,0 +1,202 @@
+{
+  "type": "object",
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "mode": {
+      "const": "recommendations-only"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "split": {
+      "enum": [
+        "calibration",
+        "held-out"
+      ]
+    },
+    "duration_ms": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 120000
+    },
+    "source_project": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "media": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": true
+    },
+    "beats": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 40,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$"
+          },
+          "start_ms": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 120000
+          },
+          "end_ms": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 120000
+          },
+          "narration": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "current_presentation": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "visual_intent": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "evidence": {
+            "type": "array",
+            "maxItems": 64,
+            "items": {
+              "type": "object"
+            }
+          },
+          "candidates": {
+            "type": "array",
+            "maxItems": 8,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9-]*$"
+                },
+                "kind": {
+                  "enum": [
+                    "progressive",
+                    "comparison",
+                    "source-card"
+                  ]
+                },
+                "motion": {
+                  "const": "pop"
+                },
+                "labels": {
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 4,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 65
+                  }
+                },
+                "reveal_ms": {
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 4,
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 120000
+                  }
+                },
+                "source_label": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 95
+                }
+              },
+              "required": [
+                "id",
+                "kind",
+                "motion",
+                "labels",
+                "reveal_ms"
+              ],
+              "additionalProperties": true,
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "kind": {
+                        "const": "source-card"
+                      }
+                    },
+                    "required": [
+                      "kind"
+                    ]
+                  },
+                  "then": {
+                    "required": [
+                      "source_label"
+                    ],
+                    "properties": {
+                      "source_label": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 95
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "start_ms",
+          "end_ms",
+          "narration",
+          "current_presentation",
+          "candidates"
+        ],
+        "additionalProperties": true
+      }
+    }
+  },
+  "required": [
+    "version",
+    "mode",
+    "title",
+    "split",
+    "duration_ms",
+    "media",
+    "beats"
+  ],
+  "additionalProperties": true,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spearfia.dev/schemas/editing-study/v1.json",
+  "$comment": "Draft: consumers also verify full source duration, file hashes, blocked-project scope, timing, unique IDs and pop-only candidates. No deployment is permitted.",
+  "title": "Short recommendation-only editing study"
+}
