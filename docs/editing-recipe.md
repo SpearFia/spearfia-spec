@@ -1,6 +1,10 @@
 <!-- SPDX-License-Identifier: MIT OR Apache-2.0 -->
 # Editing recipe v1 draft
 
+Current experiment policy: deployment and finalization are disabled, independently
+of calibration. Continue with [short recommendation-only studies](editing-study.md)
+and pop motion. Existing John Wick, GTA History and large-video trials are archived.
+
 An editing recipe records the editorial decisions against a fingerprinted saved
 timeline. Timeline intervals and anchors use the recipe timebase; source
 intervals carry their own timebase. Intervals are half-open. Source identifiers
