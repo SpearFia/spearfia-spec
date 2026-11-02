@@ -211,7 +211,15 @@
                 ]
               },
               "parameters": {
-                "type": "object"
+                "type": "object",
+                "properties": {
+                  "labels": {"type": "array", "minItems": 1, "maxItems": 4, "items": {"type": "string", "minLength": 1, "maxLength": 65}},
+                  "source_label": {"type": "string", "minLength": 1, "maxLength": 95},
+                  "qualifier": {"type": "string", "minLength": 1, "maxLength": 80},
+                  "reveal_frames": {"type": "array", "minItems": 1, "maxItems": 4, "items": {"type": "integer", "minimum": 0}},
+                  "motion": {"enum": ["slide-fade", "pop", "fade", "impact"]}
+                },
+                "additionalProperties": true
               }
             },
             "additionalProperties": true
