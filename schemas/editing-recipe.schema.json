@@ -1,0 +1,440 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spearfia.dev/schemas/editing-recipe/v1.json",
+  "$comment": "Draft: consumers must also validate interval ordering, references, evidence and media contents.",
+  "title": "Spear Fia editing recipe",
+  "type": "object",
+  "required": [
+    "version",
+    "reviewed_input_sha256",
+    "timebase",
+    "canvas",
+    "section",
+    "sources",
+    "edits",
+    "media_bindings",
+    "inputs",
+    "criteria_sha256",
+    "windows",
+    "dependencies"
+  ],
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "reviewed_input_sha256": {
+      "$ref": "#/$defs/hash"
+    },
+    "timebase": {
+      "type": "object",
+      "required": [
+        "num",
+        "den"
+      ],
+      "properties": {
+        "num": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "den": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "canvas": {
+      "type": "object",
+      "required": [
+        "width",
+        "height"
+      ],
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "section": {
+      "$ref": "#/$defs/interval"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "lineage",
+          "source_interval",
+          "timeline_interval"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "lineage": {
+            "type": "object",
+            "required": [
+              "source_id",
+              "selected_clip_id"
+            ],
+            "properties": {
+              "source_id": {
+                "$ref": "#/$defs/id"
+              },
+              "selected_clip_id": {
+                "$ref": "#/$defs/id"
+              }
+            },
+            "additionalProperties": true
+          },
+          "source_interval": {
+            "allOf": [
+              {
+                "$ref": "#/$defs/interval"
+              },
+              {
+                "type": "object",
+                "required": [
+                  "timebase"
+                ],
+                "properties": {
+                  "timebase": {
+                    "type": "object",
+                    "required": [
+                      "num",
+                      "den"
+                    ],
+                    "properties": {
+                      "num": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "den": {
+                        "type": "integer",
+                        "minimum": 1
+                      }
+                    },
+                    "additionalProperties": true
+                  }
+                }
+              }
+            ]
+          },
+          "timeline_interval": {
+            "$ref": "#/$defs/interval"
+          },
+          "speed": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "crop": {
+            "type": [
+              "object",
+              "null"
+            ]
+          },
+          "reviewed_proxy_sha256": {
+            "$ref": "#/$defs/hash",
+            "description": "Semantic source fingerprint retained across a verified HQ replacement."
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "edits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "interval",
+          "source_ids",
+          "narration_anchors",
+          "treatment",
+          "captions",
+          "sounds",
+          "decision"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "interval": {
+            "$ref": "#/$defs/interval"
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/id"
+            }
+          },
+          "narration_anchors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "word_id",
+                "frame"
+              ],
+              "properties": {
+                "word_id": {
+                  "$ref": "#/$defs/id"
+                },
+                "frame": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "treatment": {
+            "type": "object",
+            "required": [
+              "kind",
+              "parameters"
+            ],
+            "properties": {
+              "kind": {
+                "enum": [
+                  "keep",
+                  "progressive",
+                  "comparison",
+                  "source-card"
+                ]
+              },
+              "parameters": {
+                "type": "object"
+              }
+            },
+            "additionalProperties": true
+          },
+          "captions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/id"
+            }
+          },
+          "sounds": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "asset_id",
+                "target_frame",
+                "transient_frame"
+              ],
+              "properties": {
+                "asset_id": {
+                  "$ref": "#/$defs/id"
+                },
+                "target_frame": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "transient_frame": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "additionalProperties": true
+            }
+          },
+          "decision": {
+            "type": "object",
+            "required": [
+              "context_sha256",
+              "status"
+            ],
+            "properties": {
+              "context_sha256": {
+                "$ref": "#/$defs/hash"
+              },
+              "status": {
+                "enum": [
+                  "pending",
+                  "recommendation",
+                  "creator-approved",
+                  "abstained"
+                ]
+              },
+              "model": {
+                "type": "string"
+              },
+              "probabilities": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "media_bindings": {
+      "type": "array",
+      "description": "Resolution-specific files; never part of the editorial decision identity.",
+      "items": {
+        "type": "object",
+        "required": [
+          "source_id",
+          "quality",
+          "path",
+          "sha256",
+          "width",
+          "height"
+        ],
+        "properties": {
+          "source_id": {
+            "$ref": "#/$defs/id"
+          },
+          "quality": {
+            "enum": [
+              "proxy",
+              "hq"
+            ]
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "$ref": "#/$defs/hash"
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/hash"
+      }
+    },
+    "criteria_sha256": {
+      "$ref": "#/$defs/hash"
+    },
+    "windows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "context_sha256",
+          "candidates",
+          "options",
+          "flags",
+          "evidence_adequate"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "context_sha256": {
+            "$ref": "#/$defs/hash"
+          },
+          "candidates": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "options": {
+            "type": "array",
+            "minItems": 2,
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "flags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "evidence_adequate": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "edit_id",
+          "source_ids",
+          "render_sha256"
+        ],
+        "properties": {
+          "edit_id": {
+            "type": "string"
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "render_sha256": {
+            "$ref": "#/$defs/hash"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "$defs": {
+    "hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "interval": {
+      "type": "object",
+      "description": "Half-open frame interval; source intervals use the source timebase.",
+      "required": [
+        "start",
+        "end"
+      ],
+      "properties": {
+        "start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "reviewed_input_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "timebase": {
+    "num": 30,
+    "den": 1
+  },
+  "canvas": {
+    "width": 1920,
+    "height": 1080
+  },
+  "section": {
+    "start": 0,
+    "end": 300
+  },
+  "sources": [
+    {
+      "id": "shot-1",
+      "lineage": {
+        "source_id": "source-1",
+        "selected_clip_id": "clip-7"
+      },
+      "source_interval": {
+        "start": 60,
+        "end": 360,
+        "timebase": {
+          "num": 30,
+          "den": 1
+        }
+      },
+      "timeline_interval": {
+        "start": 0,
+        "end": 300
+      },
+      "speed": 1,
+      "crop": null,
+      "reviewed_proxy_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+    }
+  ],
+  "edits": [
+    {
+      "id": "beat-1",
+      "interval": {
+        "start": 0,
+        "end": 300
+      },
+      "source_ids": [
+        "shot-1"
+      ],
+      "narration_anchors": [
+        {
+          "word_id": "word-1",
+          "frame": 30
+        }
+      ],
+      "treatment": {
+        "kind": "keep",
+        "parameters": {}
+      },
+      "captions": [
+        "caption-1"
+      ],
+      "sounds": [],
+      "decision": {
+        "context_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "status": "pending"
+      }
+    }
+  ],
+  "media_bindings": [
+    {
+      "source_id": "shot-1",
+      "quality": "hq",
+      "path": "hq/shot-1.mp4",
+      "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "width": 1920,
+      "height": 1080
+    }
+  ],
+  "inputs": {
+    "saved.fcproj": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "criteria_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "windows": [
+    {
+      "id": "beat-1",
+      "context_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "candidates": [],
+      "options": [
+        "keep",
+        "none-of-these"
+      ],
+      "flags": [
+        "missing-intent"
+      ],
+      "evidence_adequate": false
+    }
+  ],
+  "dependencies": []
+}

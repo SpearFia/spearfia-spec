@@ -22,6 +22,7 @@ Each schema has an ID of the form `https://spearfia.dev/schemas/<name>/v<N>.json
 | project | v1 | draft |
 | vision | v1 | draft |
 | recipe | v1 | draft |
+| editing-recipe | v1 | draft |
 | analysis | v1 | draft |
 | timeline-plan | v1 | draft |
 | links | v1 | draft |
