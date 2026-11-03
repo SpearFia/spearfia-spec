@@ -1,10 +1,10 @@
 <!-- SPDX-License-Identifier: MIT OR Apache-2.0 -->
-# Short editing study v1 draft
+# Editing study v1 draft
 
-`editing-study` describes a complete video of at most 120 seconds and supplied
-editorial choices. It is a recommendation-only diagnostic input, separate from an
+`editing-study` describes a complete video of any length and supplied editorial
+choices. It is a recommendation-only diagnostic input, separate from an
 `editing-recipe`. It authorizes no timeline changes, approval or HQ finalization.
-The current John Wick and GTA History projects and longer videos are excluded.
+The current John Wick and GTA History projects are excluded.
 
 The [format example](../examples/editing-study/short-study.json) uses invented
 demonstration narration and a placeholder media hash. Replace it with an actual
